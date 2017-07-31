@@ -41,5 +41,5 @@ I would like the ball to be able to bounce off the top and bottom edges of the c
 ```
 As a player,
 So that I can win or lose a round of Ping,
-I would like the ball to disappear when it reaches the edges of the canvas.
+I would like the ball to disappear when it reaches the left and right edges of the canvas.
 ```
