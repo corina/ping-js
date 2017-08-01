@@ -35,5 +35,16 @@ describe("Ball", function () {
     })
   });
 
+  describe("#moveBall", function() {
+    it("changes the values of x", function() {
+      ball.moveBall();
+      expect(ball.x).toBe(242);
+    });
+    it("changes the values of y", function() {
+      ball.moveBall();
+      expect(ball.y).toBe(158);
+    });
+  });
+
 
 });
