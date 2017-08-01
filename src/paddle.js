@@ -4,12 +4,11 @@ function Paddle(canvas) {
   this.canvas = canvas;
   this.paddleHeight = 60;
   this.paddleWidth = 10;
-  this.paddleX = (canvas.width - this.paddleWidth)/2;
 }
 
-Paddle.prototype.draw = function (y) {
+Paddle.prototype.draw = function (x,y) {
   ctx.beginPath();
-  ctx.rect(this.paddleX, y, this.paddleWidth, this.paddleHeight);
+  ctx.rect(x, y, this.paddleWidth, this.paddleHeight);
   ctx.fillStyle = "green";
   ctx.fill();
   ctx.closePath();
