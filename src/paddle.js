@@ -2,16 +2,17 @@
 
 function Paddle(canvas) {
   this.canvas = canvas;
-  this.paddleHeight = 60;
-  this.paddleWidth = 10;
+  this.height = 60;
+  this.width = 10;
+  this.ctx = this.canvas.getContext("2d")
 }
 
 Paddle.prototype.draw = function (x,y) {
-  ctx.beginPath();
-  ctx.rect(x, y, this.paddleWidth, this.paddleHeight);
-  ctx.fillStyle = "green";
-  ctx.fill();
-  ctx.closePath();
+  this.ctx.beginPath();
+  this.ctx.rect(x, y, this.width, this.height);
+  this.ctx.fillStyle = "green";
+  this.ctx.fill();
+  this.ctx.closePath();
 };
 
 exports.Paddle = Paddle;
