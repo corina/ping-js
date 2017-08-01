@@ -1,6 +1,7 @@
 (function(exports) {
 
-function Paddle(height, width) {
+function Paddle(canvas) {
+  this.canvas = canvas;
   this.paddleHeight = 60;
   this.paddleWidth = 10;
   this.paddleX = (canvas.width - this.paddleWidth)/2;

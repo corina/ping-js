@@ -3,5 +3,5 @@ console.log("hello world");
 var canvas = document.getElementById("pingCanvas");
 var ctx = canvas.getContext("2d");
 
-var paddle = new Paddle();
+var paddle = new Paddle(canvas);
 paddle.draw(canvas.height / 2);
