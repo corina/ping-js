@@ -7,7 +7,7 @@
     this.ballXLocation = this.canvas.width / 2;
     this.ballYLocation = this.canvas.height / 2;
     this.ballDX = 2;
-    this.ballDY = -2;
+    this.ballDY = -4;
   }
 
   Game.prototype.start = function (p1 = new Paddle(this.canvas),
@@ -27,17 +27,25 @@
       self.run()
     });
   };
-  
+
   Game.prototype.update = function () {
     this._clearCanvas();
     this.ballPositionUpdate();
-
+    this.ballDirectionUpdate();
   }
 
   Game.prototype.ballPositionUpdate = function () {
     this.ballXLocation += this.ballDX;
     this.ballYLocation += this.ballDY;
   }
+
+  Game.prototype.ballDirectionUpdate = function () {
+    if (this.ballYLocation + this.ballDY - this.ball.radius < 0) {
+      this.ballDY = -this.ballDY
+    } else if (this.ballYLocation + this.ballDY + this.ball.radius > this.canvas.height) {
+      this.ballDY = -this.ballDY
+    }
+  };
 
   Game.prototype.draw = function () {
     this.p1.draw(this.p1Location);
