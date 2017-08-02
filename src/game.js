@@ -27,7 +27,7 @@
   Game.prototype.update = function () {
     this._clearCanvas();
     this.ball.positionUpdate();
-    this.ball.directionUpdate();
+    this.collisionDetection();
   }
 
   Game.prototype.draw = function () {
@@ -35,6 +35,15 @@
     this.p2.draw(this.p2Location);
     this.ball.draw(this.ball.x, this.ball.y);
   };
+
+  Game.prototype.collisionDetection = function () {
+    if (this.ball.y + this.ball.dy - this.ball.radius < 0) {
+      this.ball.bounce("wall");
+    } 
+    else if (this.ball.y + this.ball.dy + this.ball.radius > this.canvas.height) {
+      this.ball.bounce("wall");
+    }
+  }
 
   Game.prototype._clearCanvas = function () {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
