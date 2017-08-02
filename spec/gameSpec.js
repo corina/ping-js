@@ -26,11 +26,11 @@ describe("Game", function () {
   });
   describe("#update", function () {
     it("can move the ball", function () {
-      initialBallXerino = game.ball.x;
-      initialBallYerino = game.ball.y;
+      initialBallX = game.ball.x;
+      initialBallY = game.ball.y;
       game.update();
-      expect(game.ball.x).not.toEqual(initialBallXerino);
-      expect(game.ball.y).not.toEqual(initialBallYerino);
+      expect(game.ball.x).not.toEqual(initialBallX);
+      expect(game.ball.y).not.toEqual(initialBallY);
     });
   });
 });
