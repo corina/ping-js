@@ -7,7 +7,31 @@
     this.ballYLocation = this.canvas.height / 2;
     // this.ballDX = 2;
     // this.ballDY = -2;
+    this.p1Up = false;
+    this.p1Down = false;
   }
+
+
+Game.prototype.keyUpHandler = function(e) {
+  if (e.keyCode == 38) {
+    this.p1Up = false;
+    console.log(this.p1Up)
+  } else if (e.keyCode == 40) {
+    this.p1Down = false;
+    console.log(this.p1Down)
+  }
+}
+
+Game.prototype.keyDownHandler = function (e) {
+  if (e.keyCode == 38) {
+    this.p1Up = true;
+    console.log(this.p1Up)
+  } else if (e.keyCode == 40) {
+    console.log(this.p1Down)
+    this.p1Down = true;
+  }
+};
+
 
   Game.prototype.start = function (p1 = new Paddle(this.canvas),
                                    p2 = new Paddle(this.canvas, this.canvas.width - p1.width),
@@ -34,5 +58,6 @@
   };
 
   exports.Game = Game;
+  
 
 })(this);
