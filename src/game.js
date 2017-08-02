@@ -1,10 +1,3 @@
-// var canvas = document.getElementById("pingCanvas");
-//
-// var paddle = new Paddle(canvas);
-// var ball = new Ball(canvas, 4);
-// paddle.draw(canvas.width - paddle.width, canvas.height / 2);
-// ball.draw();
-
 (function (exports) {
   function Game(canvas) {
     this.canvas = canvas;
@@ -12,11 +5,13 @@
     this.p2Location = this.canvas.height / 2;
     this.ballXLocation = this.canvas.width / 2;
     this.ballYLocation = this.canvas.height / 2;
+    // this.ballDX = 2;
+    // this.ballDY = -2;
   }
 
   Game.prototype.start = function (p1 = new Paddle(this.canvas),
                                    p2 = new Paddle(this.canvas, this.canvas.width - p1.width),
-                                   ball = new Ball(this.canvas, 4)) {
+                                   ball = new Ball(this.canvas)) {
     this.p1 = p1;
     this.p2 = p2;
     this.ball = ball;
