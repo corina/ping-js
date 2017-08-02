@@ -29,9 +29,14 @@
   };
   
   Game.prototype.update = function () {
-    this.clearCanvas();
-    this.ballXLocation += this.ballDX
-    this.ballYLocation += this.ballDY
+    this._clearCanvas();
+    this.ballPositionUpdate();
+
+  }
+
+  Game.prototype.ballPositionUpdate = function () {
+    this.ballXLocation += this.ballDX;
+    this.ballYLocation += this.ballDY;
   }
 
   Game.prototype.draw = function () {
@@ -40,7 +45,7 @@
     this.ball.draw(this.ballXLocation, this.ballYLocation);
   };
 
-  Game.prototype.clearCanvas = function () {
+  Game.prototype._clearCanvas = function () {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
   };
   exports.Game = Game;
