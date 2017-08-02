@@ -5,8 +5,8 @@ describe("Ball", function () {
 
   beforeEach(function () {
     ball = new Ball(canvas);
-    ball.draw();
-    stack = JSON.parse(ball.ctx.json({loose: true}));
+    ball.draw(x = 240, y = 160, fillStyle="red");
+    stack = JSON.parse(ball.ctx.json());
   });
 
   afterEach(function () {
@@ -15,36 +15,23 @@ describe("Ball", function () {
 
   describe("#draw", function () {
     it("responds to beginPath", function () {
-      expect(stack[0]).toBe("beginPath");
+      expect(stack[0].method).toBe("beginPath");
     });
 
     it("responds to arc", function () {
-      expect(stack[1]).toBe("arc")
+      expect(stack[1].method).toBe("arc")
     })
 
     it("has a fillstyle", function () {
-      expect(stack[2]).toBe("fillStyle")
+      expect(stack[2].val).toBe("red")
     })
 
     it("responds to fill", function () {
-      expect(stack[3]).toBe("fill")
+      expect(stack[3].method).toBe("fill")
     })
 
     it("responds to closePath", function () {
-      expect(stack[4]).toBe("closePath")
+      expect(stack[4].method).toBe("closePath")
     })
   });
-
-  describe("#moveBall", function() {
-    it("changes the values of x", function() {
-      ball.moveBall();
-      expect(ball.x).toBe(242);
-    });
-    it("changes the values of y", function() {
-      ball.moveBall();
-      expect(ball.y).toBe(158);
-    });
-  });
-
-
 });
