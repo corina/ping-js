@@ -64,7 +64,7 @@ describe("Paddle", function () {
       it("Does not move the paddle out of bounds", function () {
         paddle.location = canvas.height;
         paddle.moveDown();
-        expect(paddle.location).toBe(canvas.height);
+        expect(paddle.location).toBe(canvas.height - paddle.height);
       });
     });
   });

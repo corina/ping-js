@@ -2,7 +2,7 @@ var game = new Game(document.getElementById("pingCanvas"));
 
 function paddleAddEventListener() {
   document.addEventListener("keydown", keyDownHandler, false);
-  document.addEventListener("keyup", game.keyUpHandler, false);
+  // document.addEventListener("keyup", game.keyUpHandler, false);
 };
 
 function keyDownHandler(e) {
@@ -11,9 +11,9 @@ function keyDownHandler(e) {
 }
 
 function player1Move(e) {
-  if (e.keyCode == 38) {
+  if (e.keyCode == 65) {
     game.p1.moveUp();
-  } else if (e.keyCode == 40) {
+  } else if (e.keyCode == 90) {
     game.p1.moveDown();
   }
 }

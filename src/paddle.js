@@ -22,13 +22,17 @@ Paddle.prototype.draw = function () {
 Paddle.prototype.moveUp = function () {
   if (this.location > 0) {
     this.location -= this.SPEED;
+  } else {
+    this.location = 0;
+    }
   };
-};
 
 Paddle.prototype.moveDown = function () {
-  if (this.location + this.height <= this.canvas.height) {
+  if (this.location + this.height < this.canvas.height) {
     this.location += this.SPEED;
-  };
+  } else {
+    this.location = this.canvas.height - this.height;
+  }
 };
 
 exports.Paddle = Paddle;
