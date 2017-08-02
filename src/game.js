@@ -4,10 +4,6 @@
     this.ctx = canvas.getContext("2d")
     this.p1Location = this.canvas.height / 2;
     this.p2Location = this.canvas.height / 2;
-    this.ballXLocation = this.canvas.width / 2;
-    this.ballYLocation = this.canvas.height / 2;
-    this.ballDX = 2;
-    this.ballDY = -4;
   }
 
   Game.prototype.start = function (p1 = new Paddle(this.canvas),
@@ -30,27 +26,14 @@
 
   Game.prototype.update = function () {
     this._clearCanvas();
-    this.ballPositionUpdate();
-    this.ballDirectionUpdate();
+    this.ball.positionUpdate();
+    this.ball.directionUpdate();
   }
-
-  Game.prototype.ballPositionUpdate = function () {
-    this.ballXLocation += this.ballDX;
-    this.ballYLocation += this.ballDY;
-  }
-
-  Game.prototype.ballDirectionUpdate = function () {
-    if (this.ballYLocation + this.ballDY - this.ball.radius < 0) {
-      this.ballDY = -this.ballDY
-    } else if (this.ballYLocation + this.ballDY + this.ball.radius > this.canvas.height) {
-      this.ballDY = -this.ballDY
-    }
-  };
 
   Game.prototype.draw = function () {
     this.p1.draw(this.p1Location);
     this.p2.draw(this.p2Location);
-    this.ball.draw(this.ballXLocation, this.ballYLocation);
+    this.ball.draw(this.ball.x, this.ball.y);
   };
 
   Game.prototype._clearCanvas = function () {
