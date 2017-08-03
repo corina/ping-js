@@ -1,9 +1,12 @@
 (function (exports) {
   function Game(canvas) {
-    this.canvas = canvas;
-    this.ctx = canvas.getContext("2d")
+    this.canvas = new Canvas(canvas);
+    // this.ctx = canvas.getContext("2d")
     this.p1Location = this.canvas.height / 2;
     this.p2Location = this.canvas.height / 2;
+    this.playfield = { width: canvas.width,
+                      height: canvas.height
+    };
   }
   Game.prototype.start = function (p1 = new Paddle(this.canvas),
                                    p2 = new Paddle(this.canvas, this.canvas.width - p1.width),
@@ -24,15 +27,15 @@
   };
 
   Game.prototype.update = function () {
-    this._clearCanvas();
+    // this._clearCanvas();
     this.ball.positionUpdate();
     this.collisionDetection();
   };
 
   Game.prototype.draw = function () {
-    this.p1.draw();
-    this.p2.draw();
-    this.ball.draw(this.ball.x, this.ball.y);
+    this.canvas.draw(this.p1, this.p2, this.ball);
+    // this.p2.draw();
+    // this.ball.draw(this.ball.x, this.ball.y);
   };
 
   Game.prototype.collisionDetection = function () {
@@ -52,9 +55,9 @@
     return this.ball.y + this.ball.dy + this.ball.radius > this.canvas.height;
   };
 
-  Game.prototype._clearCanvas = function () {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-  };
+  // Game.prototype._clearCanvas = function () {
+  //   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+  // };
   exports.Game = Game;
 
 })(this);
