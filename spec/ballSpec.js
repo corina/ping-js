@@ -10,10 +10,10 @@ describe("Ball", function () {
     ball = new Ball(playfield);
   });
 
-  describe("#bounce", function () {
+  describe("#bounceWall", function () {
     it("can bounce", function () {
       ballDirection = ball.dy;
-      ball.bounce("wall");
+      ball.bounceWall();
       expect(ball.dy).toBe(-ballDirection);
     });
   });

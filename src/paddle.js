@@ -1,7 +1,7 @@
 (function(exports) {
 
 function Paddle(playfield, x = 0) {
-  this.MOVEMENT_SPEED = 10;
+  this.MOVEMENT_SPEED = 50;
 
   this.playfieldHeight = playfield.height;
   this.x = x
