@@ -1,7 +1,7 @@
 (function(exports) {
 
 function Paddle(canvas, x = 0) {
-  this.MOVEMENT_SPEED = 10;
+  this.MOVEMENT_SPEED = 50;
 
   this.x = x
   this.canvas = canvas;

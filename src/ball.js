@@ -24,13 +24,12 @@
     this.y += this.dy;
   }
 
-  Ball.prototype.bounce = function (surface) {
-    if (surface = "wall") {
+  Ball.prototype.bounceWall = function () {
       this.dy = -this.dy;
-    }
-  //  else if (surface = "paddle") {
-  //    this.dx = -this.dx;
-  //  }
+  };
+
+  Ball.prototype.bouncePaddle = function () {
+      this.dx = -this.dx;
   };
 
 exports.Ball = Ball;
