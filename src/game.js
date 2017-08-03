@@ -37,10 +37,16 @@
 
   Game.prototype.collisionDetection = function () {
     if (this._ballHitsTop()) {
-      this.ball.bounce("wall");
+      this.ball.bounceWall();
     }
     else if (this._ballHitsBottom()) {
-      this.ball.bounce("wall");
+      this.ball.bounceWall();
+    }
+    else if (this._ballHitsRightPaddle()){
+      this.ball.bouncePaddle();
+    }
+    else if (this._ballHitsLeftPaddle()){
+      this.ball.bouncePaddle();
     }
   };
 
@@ -51,6 +57,18 @@
   Game.prototype._ballHitsBottom = function () {
     return this.ball.y + this.ball.dy + this.ball.radius > this.canvas.height;
   };
+
+  Game.prototype._ballHitsRightPaddle = function () {
+    return this.ball.x + this.ball.dx + this.ball.radius > this.canvas.width - this.p2.width
+    && this.ball.y + this.ball.dy + this.ball.radius > this.p2.location
+    && this.ball.y + this.ball.dy + this.ball.radius < this.p2.location + this.p2.height
+  }
+
+  Game.prototype._ballHitsLeftPaddle = function () {
+    return this.ball.x + this.ball.dx - this.ball.radius < this.p2.width
+    && this.ball.y + this.ball.dy + this.ball.radius > this.p2.location
+    && this.ball.y + this.ball.dy + this.ball.radius < this.p2.location + this.p2.height
+  }
 
   Game.prototype._clearCanvas = function () {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)

@@ -1,12 +1,12 @@
 (function(exports) {
 
 function Paddle(canvas, x = 0) {
-  this.MOVEMENT_SPEED = 10;
+  this.MOVEMENT_SPEED = 50;
 
   this.x = x
   this.canvas = canvas;
-  this.height = 60;
-  this.width = 10;
+  this.height = 150;
+  this.width = 100;
   this.ctx = this.canvas.getContext("2d");
   this.location = this.canvas.height / 2;
 }

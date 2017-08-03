@@ -34,10 +34,10 @@ describe("Ball", function () {
       expect(stack[4].method).toBe("closePath")
     })
   });
-  describe("#bounce", function () {
+  describe("#bounceWall", function () {
     it("can bounce", function () {
       ballDirection = ball.dy;
-      ball.bounce("wall");
+      ball.bounceWall();
       expect(ball.dy).toBe(-ballDirection);
     });
   });
