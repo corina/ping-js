@@ -1,7 +1,7 @@
 (function(exports) {
 
 function Paddle(canvas, x = 0) {
-  this.SPEED = 10;
+  this.MOVEMENT_SPEED = 10;
 
   this.x = x
   this.canvas = canvas;
@@ -20,19 +20,27 @@ Paddle.prototype.draw = function () {
 };
 
 Paddle.prototype.moveUp = function () {
-  if (this.location > 0) {
-    this.location -= this.SPEED;
+  if (this._withinTopBound()) {
+    this.location -= this.MOVEMENT_SPEED;
   } else {
     this.location = 0;
     }
   };
 
 Paddle.prototype.moveDown = function () {
-  if (this.location + this.height < this.canvas.height) {
-    this.location += this.SPEED;
+  if (this._withinBottomBound()) {
+    this.location += this.MOVEMENT_SPEED;
   } else {
     this.location = this.canvas.height - this.height;
   }
+};
+
+Paddle.prototype._withinTopBound = function () {
+  return this.location > 0;
+};
+
+Paddle.prototype._withinBottomBound = function () {
+  return this.location + this.height < this.canvas.height
 };
 
 exports.Paddle = Paddle;
