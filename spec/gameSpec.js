@@ -6,6 +6,7 @@ describe("Game", function () {
   beforeEach(function () {
     game = new Game(canvas);
     game.start();
+    spyOn(game.ball, 'bounce');
   });
 
   describe("Initialisation", function () {
@@ -33,4 +34,12 @@ describe("Game", function () {
       expect(game.ball.y).not.toEqual(initialBallY);
     });
   });
+  describe("#collisionDetection", function() {
+    it("can detect a ball-wall collision", function() {
+      game.ball.x = game.canvas.width / 2
+      game.ball.y = 2;  
+      game.update();
+      expect(game.ball.bounce).toHaveBeenCalled();
+    })
+  })
 });

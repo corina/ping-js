@@ -24,12 +24,13 @@
     this.y += this.dy;
   }
 
-  Ball.prototype.directionUpdate = function () {
-    if (this.y + this.dy - this.radius < 0) {
-      this.dy = -this.dy
-    } else if (this.y + this.dy + this.radius > this.canvas.height) {
-      this.dy = -this.dy
+  Ball.prototype.bounce = function (surface) {
+    if (surface = "wall") {
+      this.dy = -this.dy;
     }
+  //  else if (surface = "paddle") {
+  //    this.dx = -this.dx;
+  //  }
   };
 
 exports.Ball = Ball;

@@ -27,13 +27,30 @@
   Game.prototype.update = function () {
     this._clearCanvas();
     this.ball.positionUpdate();
-    this.ball.directionUpdate();
-  }
+    this.collisionDetection();
+  };
 
   Game.prototype.draw = function () {
     this.p1.draw(this.p1Location);
     this.p2.draw(this.p2Location);
     this.ball.draw(this.ball.x, this.ball.y);
+  };
+
+  Game.prototype.collisionDetection = function () {
+    if (this._ballHitsTop()) {
+      this.ball.bounce("wall");
+    } 
+    else if (this._ballHitsBottom()) {
+      this.ball.bounce("wall");
+    }
+  };
+
+  Game.prototype._ballHitsTop = function () {
+    return this.ball.y + this.ball.dy - this.ball.radius < 0;
+  };
+
+  Game.prototype._ballHitsBottom = function () {
+    return this.ball.y + this.ball.dy + this.ball.radius > this.canvas.height;
   };
 
   Game.prototype._clearCanvas = function () {
