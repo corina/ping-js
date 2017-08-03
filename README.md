@@ -43,3 +43,15 @@ As a player,
 So that I can win or lose a round of Ping,
 I would like the ball to disappear when it reaches the left and right edges of the canvas.
 ```
+
+```
+As a Player,
+So that I can keep playing Ping,
+I would like a new round to start when the ball goes outside the play-field.
+```
+
+```
+As a player,
+So that I can beat my friends at Ping,
+I want to be able to score points.
+```
