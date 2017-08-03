@@ -5,8 +5,8 @@ function Paddle(canvas, x = 0) {
 
   this.x = x
   this.canvas = canvas;
-  this.height = 150;
-  this.width = 100;
+  this.height = 60;
+  this.width = 10;
   this.ctx = this.canvas.getContext("2d");
   this.location = this.canvas.height / 2;
 }
