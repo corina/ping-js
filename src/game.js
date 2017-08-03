@@ -66,9 +66,9 @@
   }
 
   Game.prototype._ballHitsLeftPaddle = function () {
-    return this.ball.x + this.ball.dx - this.ball.radius < this.p2.width
-    && this.ball.y + this.ball.dy + this.ball.radius > this.p2.location
-    && this.ball.y + this.ball.dy + this.ball.radius < this.p2.location + this.p2.height
+    return this.ball.x + this.ball.dx - this.ball.radius < this.p1.width
+    && this.ball.y + this.ball.dy + this.ball.radius > this.p1.location
+    && this.ball.y + this.ball.dy + this.ball.radius < this.p1.location + this.p1.height
   }
 
   exports.Game = Game;
