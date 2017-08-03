@@ -1,5 +1,5 @@
 describe("Paddle", function () {
-  var paddle, stack, canvas;
+  var paddle, stack, canvas, location;
 
   canvas = document.createElement("canvas");
   ctx = canvas.getContext("2d");
@@ -34,6 +34,38 @@ describe("Paddle", function () {
 
     it("responds to closePath", function () {
       expect(stack[4]).toBe("closePath");
+    });
+  });
+
+  describe("Movement", function () {
+    beforeEach(function () {
+      location = paddle.location;
+    });
+
+    describe("#moveUp", function () {
+      it("moves the paddle up the canvas", function () {
+        paddle.moveUp();
+        expect(paddle.location).not.toBe(location);
+      });
+
+      it("Does not move the paddle out of bounds", function () {
+        paddle.location = 0;
+        paddle.moveUp();
+        expect(paddle.location).toBe(0);
+      });
+    })
+
+    describe("#moveDown", function () {
+      it("moves the paddle down the canvas", function () {
+        paddle.moveDown();
+        expect(paddle.location).not.toBe(location);
+      });
+
+      it("Does not move the paddle out of bounds", function () {
+        paddle.location = canvas.height;
+        paddle.moveDown();
+        expect(paddle.location).toBe(canvas.height - paddle.height);
+      });
     });
   });
 });
