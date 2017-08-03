@@ -1,20 +1,28 @@
 describe("Game", function () {
-  var game, canvas;
-
-  canvas = document.createElement("canvas");
+  var game, canvasMock;
 
   beforeEach(function () {
-    game = new Game(canvas);
+    canvasMock = {
+      draw: function () {
+        return undefined;
+      },
+      width: 100,
+      height: 100
+    };
+
+    game = new Game(canvasMock);
     game.start();
     spyOn(game.ball, 'bounceWall');
     spyOn(game.ball, 'bouncePaddle');
+    spyOn(canvasMock, 'draw');
   });
 
   describe("Initialisation", function () {
     it("has a canvas", function () {
-      expect(game.canvas.id).not.toBe(undefined)
+      expect(game.canvas).not.toBe(undefined)
     });
   });
+
   describe("#start", function () {
     it("has a paddle", function () {
       expect(game.p1).not.toBe(undefined)
@@ -26,6 +34,7 @@ describe("Game", function () {
       expect(game.ball).not.toBe(undefined)
     });
   });
+
   describe("#update", function () {
     it("can move the ball", function () {
       initialBallX = game.ball.x;
@@ -35,6 +44,7 @@ describe("Game", function () {
       expect(game.ball.y).not.toEqual(initialBallY);
     });
   });
+
   describe("#collisionDetection", function() {
     it("can detect a ball-wall collision", function() {
       game.ball.x = game.canvas.width / 2

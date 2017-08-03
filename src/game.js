@@ -1,13 +1,17 @@
 (function (exports) {
-  function Game(canvas) {
+  function Game(canvas = new Canvas(document.getElementById('pingCanvas'))) {
     this.canvas = canvas;
-    this.ctx = canvas.getContext("2d")
-    this.p1Location = this.canvas.height / 2;
-    this.p2Location = this.canvas.height / 2;
+    this.playfield = {
+      width: canvas.width,
+      height: canvas.height
+    };
+
+    this.p1Location = this.playfield.height / 2;
+    this.p2Location = this.playfield.height / 2;
   }
-  Game.prototype.start = function (p1 = new Paddle(this.canvas),
-                                   p2 = new Paddle(this.canvas, this.canvas.width - p1.width),
-                                   ball = new Ball(this.canvas)) {
+  Game.prototype.start = function (p1 = new Paddle(this.playfield),
+                                   p2 = new Paddle(this.canvas, this.playfield.width - p1.width),
+                                   ball = new Ball(this.playfield)) {
     this.p1 = p1;
     this.p2 = p2;
     this.ball = ball;
@@ -17,22 +21,19 @@
   Game.prototype.run = function () {
     var self = this;
     this.update();
-    this.draw(); // render the updated changes
+    this.draw();
     requestAnimationFrame(function () {
-      self.run()
+      self.run();
     });
   };
 
   Game.prototype.update = function () {
-    this._clearCanvas();
     this.ball.positionUpdate();
     this.collisionDetection();
   };
 
   Game.prototype.draw = function () {
-    this.p1.draw();
-    this.p2.draw();
-    this.ball.draw(this.ball.x, this.ball.y);
+    this.canvas.draw(this.p1, this.p2, this.ball);
   };
 
   Game.prototype.collisionDetection = function () {

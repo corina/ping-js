@@ -1,39 +1,15 @@
 describe("Ball", function () {
-  var ball, stack, canvas;
+  var ball, playfield, stack;
 
-  canvas = document.createElement("canvas");
+  playfield = {
+    width: 100,
+    height: 100
+  }
 
   beforeEach(function () {
-    ball = new Ball(canvas);
-    ball.draw(x = 240, y = 160, fillStyle="red");
-    stack = JSON.parse(ball.ctx.json());
+    ball = new Ball(playfield);
   });
 
-  afterEach(function () {
-    ball.ctx.clear();
-  });
-
-  describe("#draw", function () {
-    it("responds to beginPath", function () {
-      expect(stack[0].method).toBe("beginPath");
-    });
-
-    it("responds to arc", function () {
-      expect(stack[1].method).toBe("arc")
-    })
-
-    it("has a fillstyle", function () {
-      expect(stack[2].val).toBe("red")
-    })
-
-    it("responds to fill", function () {
-      expect(stack[3].method).toBe("fill")
-    })
-
-    it("responds to closePath", function () {
-      expect(stack[4].method).toBe("closePath")
-    })
-  });
   describe("#bounceWall", function () {
     it("can bounce", function () {
       ballDirection = ball.dy;

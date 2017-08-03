@@ -1,4 +1,4 @@
-var game = new Game(document.getElementById("pingCanvas"));
+var game = new Game();
 
 function paddleAddEventListener() {
   document.addEventListener("keydown", keyDownHandler, false);
