@@ -7,7 +7,7 @@
     this.colour = "black";
     this.width = element.width;
     this.height = element.height;
-  }
+  };
 
   Canvas.prototype.draw = function (p1, p2, ball) {
     this._clear();
