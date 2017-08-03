@@ -1,16 +1,17 @@
 (function (exports) {
-  function Game(canvas) {
-    this.canvas = new Canvas(canvas);
-    // this.ctx = canvas.getContext("2d")
-    this.p1Location = this.canvas.height / 2;
-    this.p2Location = this.canvas.height / 2;
-    this.playfield = { width: canvas.width,
-                      height: canvas.height
+  function Game(canvas = new Canvas(document.getElementById('pingCanvas'))) {
+    this.canvas = canvas;
+    this.playfield = {
+      width: canvas.width,
+      height: canvas.height
     };
+
+    this.p1Location = this.playfield.height / 2;
+    this.p2Location = this.playfield.height / 2;
   }
-  Game.prototype.start = function (p1 = new Paddle(this.canvas),
-                                   p2 = new Paddle(this.canvas, this.canvas.width - p1.width),
-                                   ball = new Ball(this.canvas)) {
+  Game.prototype.start = function (p1 = new Paddle(this.playfield),
+                                   p2 = new Paddle(this.canvas, this.playfield.width - p1.width),
+                                   ball = new Ball(this.playfield)) {
     this.p1 = p1;
     this.p2 = p2;
     this.ball = ball;
@@ -20,22 +21,19 @@
   Game.prototype.run = function () {
     var self = this;
     this.update();
-    this.draw(); // render the updated changes
+    this.draw();
     requestAnimationFrame(function () {
-      self.run()
+      self.run();
     });
   };
 
   Game.prototype.update = function () {
-    // this._clearCanvas();
     this.ball.positionUpdate();
     this.collisionDetection();
   };
 
   Game.prototype.draw = function () {
     this.canvas.draw(this.p1, this.p2, this.ball);
-    // this.p2.draw();
-    // this.ball.draw(this.ball.x, this.ball.y);
   };
 
   Game.prototype.collisionDetection = function () {
@@ -55,9 +53,6 @@
     return this.ball.y + this.ball.dy + this.ball.radius > this.canvas.height;
   };
 
-  // Game.prototype._clearCanvas = function () {
-  //   this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-  // };
   exports.Game = Game;
 
 })(this);

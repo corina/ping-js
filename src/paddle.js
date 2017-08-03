@@ -1,23 +1,14 @@
 (function(exports) {
 
-function Paddle(canvas, x = 0) {
+function Paddle(playfield, x = 0) {
   this.MOVEMENT_SPEED = 10;
 
+  this.playfieldHeight = playfield.height;
   this.x = x
-  this.canvas = canvas;
   this.height = 60;
   this.width = 10;
-  // this.ctx = this.canvas.getContext("2d");
-  this.location = this.canvas.height / 2;
+  this.location = playfield.height / 2;
 }
-
-// Paddle.prototype.draw = function () {
-//   this.ctx.beginPath();
-//   this.ctx.rect(this.x, this.location, this.width, this.height);
-//   this.ctx.fillStyle = "green";
-//   this.ctx.fill();
-//   this.ctx.closePath();
-// };
 
 Paddle.prototype.moveUp = function () {
   if (this._withinTopBound()) {
@@ -31,7 +22,7 @@ Paddle.prototype.moveDown = function () {
   if (this._withinBottomBound()) {
     this.location += this.MOVEMENT_SPEED;
   } else {
-    this.location = this.canvas.height - this.height;
+    this.location = this.playfieldHeight - this.height;
   }
 };
 
@@ -40,7 +31,7 @@ Paddle.prototype._withinTopBound = function () {
 };
 
 Paddle.prototype._withinBottomBound = function () {
-  return this.location + this.height < this.canvas.height
+  return this.location + this.height < this.playfieldHeight;
 };
 
 exports.Paddle = Paddle;
