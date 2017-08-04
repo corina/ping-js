@@ -50,6 +50,8 @@ describe("Game", function () {
     it("can detect a ball-wall collision", function() {
       game.ball.x = game.playfield.width / 2
       game.ball.y = 2;
+      game.ball.dx = 0;
+      game.ball.dy = -2;
       game.update();
       expect(game.ball.bounceWall).toHaveBeenCalled();
     })
