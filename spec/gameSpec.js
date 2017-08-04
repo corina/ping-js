@@ -55,7 +55,8 @@ describe("Game", function () {
     it("can detect a ball-rightPaddle collision", function() {
       game.ball.x = game.playfield.width - game.p2.width - game.ball.radius - 1
       game.ball.y = game.playfield.height/2 + 2
-      game.ball.dy = 0
+      game.ball.dx = 2;
+      game.ball.dy = 0;
       game.update();
       expect(game.ball.bouncePaddle).toHaveBeenCalled();
     })

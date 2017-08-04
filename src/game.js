@@ -15,21 +15,33 @@
     this.p1 = p1;
     this.p2 = p2;
     this.ball = ball;
-    this.run();
+    this.animateFrame();
   };
 
+
+Game.prototype.animateFrame = function () {
+  var self = this;
+  return requestAnimationFrame(function() {
+    self.run();
+  })
+};
+
   Game.prototype.run = function () {
-    var self = this;
     this.update();
     this.draw();
-    requestAnimationFrame(function () {
-      self.run();
-    });
+    this.animateFrame();
+  };
+
+  Game.prototype.checkBallLocation = function () {
+    if (this.ball.isOutOfBounds()) {
+      this.ball = new Ball(this.playfield);
+    }
   };
 
   Game.prototype.update = function () {
     this.ball.positionUpdate();
     this.collisionDetection();
+    this.checkBallLocation();
   };
 
   Game.prototype.draw = function () {
