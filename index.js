@@ -1,30 +1,13 @@
-var game = new Game();
+// var game = new Game();
+// game.start();
 
-function paddleAddEventListener() {
-  document.addEventListener("keydown", keyDownHandler, false);
-  // document.addEventListener("keyup", game.keyUpHandler, false);
-};
+"use strict";
 
-function keyDownHandler(e) {
-  player1Move(e);
-  player2Move(e);
-}
+(function() {
+  window.addEventListener("load", function() {
 
-function player1Move(e) {
-  if (e.keyCode == 65) {
-    game.p1.moveUp();
-  } else if (e.keyCode == 90) {
-    game.p1.moveDown();
-  }
-}
+    var game = new Game();
+    game.start();
 
-function player2Move(e) {
-  if (e.keyCode == 38) {
-    game.p2.moveUp();
-  } else if (e.keyCode == 40) {
-    game.p2.moveDown();
-  }
-}
-
-paddleAddEventListener();
-game.start();
+  });
+})();
