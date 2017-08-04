@@ -18,12 +18,17 @@
   }
 
   Ball.prototype.bounceWall = function () {
-      this.dy = -this.dy;
+    this.dy = -this.dy;
   };
 
   Ball.prototype.bouncePaddle = function () {
-      this.dx = -this.dx;
+    this.dx = -this.dx;
   };
+
+  Ball.prototype.accelerate = function(multiplier) {
+    this.dy = this.dy * multiplier
+    this.dx = this.dx * multiplier
+  }
 
 exports.Ball = Ball;
 
