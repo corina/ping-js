@@ -16,31 +16,41 @@
     this.p2 = p2;
     this.ball = ball;
     this.eventListener();
-    this.run();
+    this.animateFrame();
   };
 
   Game.prototype.eventListener = function() {
     document.addEventListener("keydown", this.keyDownHandler.bind(this), false);
   };
 
-
   Game.prototype.keyDownHandler = function(e) {
     this.p1.playerMove(e)
     this.p2.playerMove(e)
   }
 
+Game.prototype.animateFrame = function () {
+  var self = this;
+  return requestAnimationFrame(function() {
+    self.run();
+  })
+};
+
   Game.prototype.run = function () {
-    var self = this;
     this.update();
     this.draw();
-    requestAnimationFrame(function () {
-      self.run();
-    });
+    this.animateFrame();
+  };
+
+  Game.prototype.checkBallLocation = function () {
+    if (this.ball.isOutOfBounds()) {
+      this.ball = new Ball(this.playfield);
+    }
   };
 
   Game.prototype.update = function () {
     this.ball.positionUpdate();
     this.collisionDetection();
+    this.checkBallLocation();
   };
 
   Game.prototype.draw = function () {
