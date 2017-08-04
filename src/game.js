@@ -25,8 +25,8 @@
 
 
   Game.prototype.keyDownHandler = function(e) {
-    this.p1.player1Move(e)
-    this.p2.player2Move(e)
+    this.p1.playerMove(e)
+    this.p2.playerMove(e)
   }
 
   Game.prototype.run = function () {
