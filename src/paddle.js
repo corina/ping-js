@@ -10,6 +10,22 @@ function Paddle(playfield, x = 0) {
   this.location = playfield.height / 2;
 }
 
+Paddle.prototype.player1Move =  function (e) {
+  if (e.keyCode == 65) {
+    this.moveUp();
+  } else if (e.keyCode == 90) {
+    this.moveDown();
+  }
+}
+
+Paddle.prototype.player2Move = function (e) {
+  if (e.keyCode == 38) {
+    this.moveUp();
+  } else if (e.keyCode == 40) {
+    this.moveDown();
+  }
+}
+
 Paddle.prototype.moveUp = function () {
   if (this._withinTopBound()) {
     this.location -= this.MOVEMENT_SPEED;

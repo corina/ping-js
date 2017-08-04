@@ -15,8 +15,19 @@
     this.p1 = p1;
     this.p2 = p2;
     this.ball = ball;
+    this.eventListener();
     this.run();
   };
+
+  Game.prototype.eventListener = function() {
+    document.addEventListener("keydown", this.keyDownHandler.bind(this), false);
+  };
+
+
+  Game.prototype.keyDownHandler = function(e) {
+    this.p1.player1Move(e)
+    this.p2.player2Move(e)
+  }
 
   Game.prototype.run = function () {
     var self = this;
