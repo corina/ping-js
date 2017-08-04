@@ -17,4 +17,19 @@ describe("Ball", function () {
       expect(ball.dy).toBe(-ballDirection);
     });
   });
+
+  describe("#accelerate", function() {
+    it("can increase speed along the y axis", function () {
+      ballYSpeed = ball.dy;
+      multiplier = 1.1;
+      ball.accelerate(multiplier);
+      expect(Math.abs(ball.dy)).toBeGreaterThan(Math.abs(ballYSpeed));
+    })
+    it("can increase speed along the x axis", function () {
+      ballXSpeed = ball.dx;
+      multiplier = 1.1;
+      ball.accelerate(multiplier);
+      expect(Math.abs(ball.dx)).toBeGreaterThan(Math.abs(ballXSpeed));
+    })
+  })
 });

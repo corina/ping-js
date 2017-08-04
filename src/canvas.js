@@ -4,7 +4,7 @@
     this.BALL_END_ANGLE = Math.PI*2
     this.element = element;
     this.ctx = this.element.getContext("2d");
-    this.colour = "black";
+    this.colour = "#FFF";
     this.width = element.width;
     this.height = element.height;
   };

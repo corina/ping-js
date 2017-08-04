@@ -14,6 +14,7 @@ describe("Game", function () {
     game.start();
     spyOn(game.ball, 'bounceWall');
     spyOn(game.ball, 'bouncePaddle');
+    spyOn(game.ball, 'accelerate');
     spyOn(canvasMock, 'draw');
   });
 
@@ -49,6 +50,8 @@ describe("Game", function () {
     it("can detect a ball-wall collision", function() {
       game.ball.x = game.playfield.width / 2
       game.ball.y = 2;
+      game.ball.dx = 0;
+      game.ball.dy = -2;
       game.update();
       expect(game.ball.bounceWall).toHaveBeenCalled();
     })
@@ -60,13 +63,21 @@ describe("Game", function () {
       game.update();
       expect(game.ball.bouncePaddle).toHaveBeenCalled();
     })
-    it("can detect a ball-rightPaddle collision", function() {
+    it("can detect a ball-leftPaddle collision", function() {
       game.ball.x = game.ball.radius + game.p1.width + 1
       game.ball.y = game.playfield.height/2 + 2
       game.ball.dy = 0
       game.ball.dx = -2
       game.update();
       expect(game.ball.bouncePaddle).toHaveBeenCalled();
+    })
+    it("calls accelerate on the ball upon a paddle collisoin", function () {
+      game.ball.x = game.playfield.width - game.p2.width - game.ball.radius - 1
+      game.ball.y = game.playfield.height/2 + 2
+      game.ball.dx = 2;
+      game.ball.dy = 0;
+      game.update();
+      expect(game.ball.accelerate).toHaveBeenCalled();
     })
   })
 });

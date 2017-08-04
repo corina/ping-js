@@ -3,9 +3,56 @@
   <head>
     <meta charset="utf-8">
     <title>Ping</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/master.css">
   </head>
   <body>
-    <canvas id="pingCanvas" width="800" height="500"></canvas>
+    <div class="container text-center text">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>PING</h1>
+
+            <canvas id="pingCanvas" width="800" height="500"></canvas>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h2>HOW TO PLAY</h2>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p>PLAYER 1</p>
+                    <p>UP: A</p>
+                    <p>DOWN: Z</p>
+                  </div>
+
+                  <div class="col-md-6">
+                    <p>PLAYER 2</p>
+                    <p>UP: UP ARROW</p>
+                    <p>DOWN: DOWN ARROW</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <footer class="footer navbar navbar-fixed-bottom">
+        <p><a href="http://www.makersacademy.com">Makers Academy</a> Week 9 Project</p>
+        <p>Made by
+          <a href="https://github.com/alistairkung">Alistair</a>,
+          <a href="https://github.com/terminalobject">Alessandro</a>,
+          <a href="https://github.com/Corina">Corina</a>,
+          <a href="https://github.com/Hempy49">Simon</a> and
+          <a href="https://github.com/tbscanlon">Tom</a>.
+        </p>
+      </footer>
+    </div>
 
     <script type="text/javascript" src="src/ball.js"></script>
     <script type="text/javascript" src="src/paddle.js"></script>

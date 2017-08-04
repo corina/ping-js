@@ -42,6 +42,11 @@
     this.dx = -this.dx;
   };
 
-  exports.Ball = Ball;
+  Ball.prototype.accelerate = function(multiplier) {
+    this.dy = this.dy * multiplier
+    this.dx = this.dx * multiplier
+  }
+
+exports.Ball = Ball;
 
 })(this);

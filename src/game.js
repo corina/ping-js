@@ -8,6 +8,7 @@
 
     this.p1Location = this.playfield.height / 2;
     this.p2Location = this.playfield.height / 2;
+    this.ACCELERATIONMULTIPLIER = 1.1
   }
   Game.prototype.start = function (p1 = new Paddle(this.playfield),
                                    p2 = new Paddle(this.playfield, this.playfield.width - p1.width),
@@ -66,9 +67,11 @@ Game.prototype.animateFrame = function () {
     }
     else if (this._ballHitsRightPaddle()){
       this.ball.bouncePaddle();
+      this.ball.accelerate(this.ACCELERATIONMULTIPLIER);
     }
     else if (this._ballHitsLeftPaddle()){
       this.ball.bouncePaddle();
+      this.ball.accelerate(this.ACCELERATIONMULTIPLIER);
     }
   };
 
