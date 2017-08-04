@@ -1,0 +1,36 @@
+.text {
+  font-family: "Press Start 2P", cursive;
+  color: white;
+}
+
+h1 {
+  font-size: 50pt;
+  margin-bottom: 10pt;
+}
+
+h2 {
+  margin-bottom: 20pt;
+}
+
+body {
+  background-color: #111;
+}
+
+a {
+  color: #bbb;
+}
+
+a:hover {
+  color: #999;
+}
+
+.footer {
+  font-size: 9pt;
+}
+
+#pingCanvas {
+  padding: 2pt 5pt 2pt 5pt;
+  border: 6pt solid white;
+  margin-top: 20pt;
+  margin-bottom: 20pt;
+}
