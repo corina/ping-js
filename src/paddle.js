@@ -8,7 +8,7 @@ function Paddle(playfield, x = 0) {
   this.height = 60;
   this.width = 10;
   this.location = playfield.height / 2;
-}
+};
 
 Paddle.prototype.playerMove =  function (e) {
   var upCode = this.x == 0 ? 65 : 38
@@ -18,16 +18,15 @@ Paddle.prototype.playerMove =  function (e) {
   } else if (e.keyCode == downCode) {
     this.moveDown();
   }
-}
-
+};
 
 Paddle.prototype.moveUp = function () {
   if (this._withinTopBound()) {
     this.location -= this.MOVEMENT_SPEED;
   } else {
     this.location = 0;
-    }
-  };
+  }
+};
 
 Paddle.prototype.moveDown = function () {
   if (this._withinBottomBound()) {

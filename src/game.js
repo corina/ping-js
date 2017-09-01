@@ -29,12 +29,12 @@
     this.p2.playerMove(e)
   }
 
-Game.prototype.animateFrame = function () {
-  var self = this;
-  return requestAnimationFrame(function() {
-    self.run();
-  })
-};
+  Game.prototype.animateFrame = function () {
+    var self = this;
+    return requestAnimationFrame(function() {
+      self.run();
+    })
+  };
 
   Game.prototype.run = function () {
     this.update();

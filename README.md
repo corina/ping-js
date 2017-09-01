@@ -1,5 +1,5 @@
 # Ping
-It's basically pong, but with a ~different name~
+It's basically pong, but with a :sparkles: different name :sparkles:
 
 ## User Stories
 ```
